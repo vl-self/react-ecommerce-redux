@@ -1,0 +1,19 @@
+.section_title::before {
+  left: 3px;
+  content: "";
+  border-bottom: 1px solid #e0e0e0;
+  position: absolute;
+  top: 25px;
+  width: 34%;
+  align-items: center;
+}
+
+.section_title::after {
+  right: 3px;
+  content: "";
+  border-bottom: 1px solid #e0e0e0;
+  position: absolute;
+  top: 25px;
+  width: 34%;
+  align-items: center;
+}

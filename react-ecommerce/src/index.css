@@ -1,7 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --font-roboto: "Roboto", sans-serif;
+  --body-font-weight: 400;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-roboto);
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: var(--body-font-weight);
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -14,7 +21,7 @@
 }
 
 a {
-  font-weight: 500;
+  font-weight: var(--body-font-weight);
   color: #646cff;
   text-decoration: inherit;
 }
@@ -24,9 +31,8 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -35,12 +41,30 @@ h1 {
   line-height: 1.1;
 }
 
+h2 {
+  font-size: 3em;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: 2.8em;
+  line-height: 1.1;
+}
+
+h4 {
+  font-size: 2em;
+  line-height: 1.1;
+}
+
+h5 {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  padding: 0.5rem;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 400;
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
@@ -57,12 +81,15 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #f3f2ec;
+  }
+  a {
+    color: #383838;
   }
   a:hover {
-    color: #747bff;
+    color: #daa556;
   }
   button {
-    background-color: #f9f9f9;
+    background-color: #daa556;
   }
 }

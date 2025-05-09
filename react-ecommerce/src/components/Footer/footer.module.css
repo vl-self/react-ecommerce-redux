@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.footer_section {
+  @apply mb-6 text-xl;
+}
+
+.footer_item {
+  @apply p-1;
+}
