@@ -1,19 +1,14 @@
 import "./App.css";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Beauty from "./components/Home/Beauty";
-import Contact from "./components/Home/Contact";
-import Banner from "./components/Banner/Banner";
-import { Articles } from "./components/Articles/Articles";
+import Footer from "./components/footer/Footer";
+import Header from "./components/header/Header";
+
+import { Outlet } from "react-router";
 
 function App() {
   return (
     <div className="px-[6rem]">
       <Header></Header>
-      <Banner></Banner>
-      <Articles></Articles>
-      <Beauty></Beauty>
-      <Contact></Contact>
+      <Outlet></Outlet>
       <Footer></Footer>
     </div>
   );

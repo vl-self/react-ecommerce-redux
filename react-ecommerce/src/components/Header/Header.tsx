@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { HashLink } from "react-router-hash-link";
 const Header = () => {
   return (
@@ -33,7 +34,9 @@ const Header = () => {
               <HashLink to="/#contact">Contact</HashLink>
             </li>
             <li className="uppercase text-center">
-              <button className="uppercase">Shop Now</button>
+              <button className="uppercase">
+                <Link to="/prodlist">Shop Now</Link>
+              </button>
             </li>
           </ul>
         </nav>

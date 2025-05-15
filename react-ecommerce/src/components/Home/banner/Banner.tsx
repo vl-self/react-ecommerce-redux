@@ -1,10 +1,6 @@
-import styles from "./banner.module.css";
 const Banner = () => {
   return (
-    // ISSUE_KNOWN: same css are written in tailwind but first block with (h2,p are taking more width than second cell)
-    // <div className="w-[85%] m-[0_auto] py-[2rem] grid grid-col-[1fr_1fr] grid-flow-col"></div>
-
-    <div className={`w-[85%] m-[0_auto] py-[2rem] ${styles.bannerGrid}`}>
+    <div className="w-[85%] m-[0_auto] py-[2rem] grid grid-cols-[repeat(2,minmax(250px,_1fr))] grid-flow-col">
       <div className="flex items-center">
         <div className="text-center">
           <h2 className="font-bold m-[3rem]">Exiciting Offers are here!</h2>

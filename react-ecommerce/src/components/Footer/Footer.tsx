@@ -2,8 +2,8 @@ import styles from "./footer.module.css";
 
 const Footer = () => {
   return (
-    <footer id="about" className="py-[5rem]">
-      <div className="grid grid-col-11 grid-flow-col">
+    <footer id="about">
+      <div className="py-[5rem] grid grid-col-11 grid-flow-col">
         <div className="col-span-3 text-left">
           <div className={styles.footer_section}>
             <img
