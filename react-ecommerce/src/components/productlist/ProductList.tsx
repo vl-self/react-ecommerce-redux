@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import Spinner from "../spinner/Spinner";
 import type { productInterFace } from "../../types/product";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faList, faGripVertical } from "@fortawesome/free-solid-svg-icons";
 
 const pgSizes = [4, 8, 16];
 
@@ -56,9 +58,21 @@ const ProductList = () => {
     <div className="p-[3.5rem]">
       {visiblePrds.length > 0 && (
         <>
-          <div className="m-[20px_auto] text-center">
-            <div>
-              <select onChange={onPageSizeChange} defaultValue={curPgSize}>
+          <div className="m-[20px_auto]">
+            <div className="inline-block w-[49%] text-left">
+              <span className="border-[#daa556] border p-[1rem]">
+                <FontAwesomeIcon icon={faList} />
+              </span>
+              <span className="border-[#daa556] border p-[1rem]">
+                <FontAwesomeIcon icon={faGripVertical} />
+              </span>
+            </div>
+            <div className="inline-block w-[50%] text-right">
+              <select
+                onChange={onPageSizeChange}
+                defaultValue={curPgSize}
+                className="border-[#daa556] border p-[10px] m-[1rem]"
+              >
                 {pgSizes.map((size) => (
                   <option value={size}>{size}</option>
                 ))}
