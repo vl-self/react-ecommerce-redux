@@ -97,4 +97,8 @@ button:focus-visible {
     background-color: #f0a22d;
     border-color: #daa556;
   }
+  button:disabled {
+    background-color: #d2c4ae;
+    border-color: #daa556;
+  }
 }
