@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import Spinner from "../spinner/Spinner";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { productInterFace } from "../../types/product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faGripVertical } from "@fortawesome/free-solid-svg-icons";

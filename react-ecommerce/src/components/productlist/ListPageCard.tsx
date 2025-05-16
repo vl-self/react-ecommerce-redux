@@ -6,7 +6,10 @@ type ProductCardProps = {
 
 const ListPageCard: React.FC<ProductCardProps> = ({ prd }) => {
   return (
-    <div className="bg-[#EFEEE8] p-[2rem] relative group overflow-hidden">
+    <div
+      className="bg-[#EFEEE8] p-[2rem] relative group overflow-hidden"
+      key={prd?.id}
+    >
       <figure className="min-w-[186px] min-h-[186px]">
         <img src={prd.thumbnail} className="w-full" alt="Loading.."></img>
         <button className="uppercase absolute bottom-[-40px] left-[0px] p-[0.5rem] text-black w-full rounded-none group-hover:bottom-[0px]">

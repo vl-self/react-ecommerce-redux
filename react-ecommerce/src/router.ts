@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router";
 import App from "./App";
 import ProductList from "./components/productlist/ProductList";
 import Home from "./components/home/Home";
+import InfiniteProductsList from "./components/infiniteproductlist/InfiniteProductsList";
 
 const routerObj = createBrowserRouter([
   {
@@ -12,6 +13,7 @@ const routerObj = createBrowserRouter([
       {
         path: "/prodlist",
         Component: ProductList,
+        // Component: InfiniteProductsList,
       },
     ],
   },
