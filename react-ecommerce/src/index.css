@@ -9,7 +9,7 @@
 
   --site-light-root-bg-color: #f3f2ec;
   --site-light-root-text-color: #213547;
-  --site-light-theme-text-color: #f0ad4e;
+  --site-light-theme-text-color: #ec971f;
 
   /** Button Theme **/
   --site-light-button-color: var(--site-light-root-text-color);
