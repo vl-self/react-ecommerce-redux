@@ -1,7 +1,7 @@
-import type { productInterFace } from "../../types/product";
+import type { ProductItem } from "../../types/product";
 
 type ProductCardProps = {
-  prd: productInterFace;
+  prd: ProductItem;
 };
 
 const ListPageCard: React.FC<ProductCardProps> = ({ prd }) => {

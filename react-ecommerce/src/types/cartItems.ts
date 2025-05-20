@@ -1,14 +1,14 @@
-import type { productInterFace } from "./product";
+import type { ProductItem } from "./product";
 
-export interface cartItem extends productInterFace {
+export interface CartItem extends ProductItem {
   quantity: number;
 }
 export type CartState = {
-  cartItems: cartItem[];
+  cartItems: CartItem[];
   cartCount: number;
 };
 export type CartAction =
-  | { type: "ADD_TO_CART"; payload: productInterFace }
-  | { type: "REMOVE_FROM_CART"; payload: productInterFace }
-  | { type: "DECREASE_QUANTITY"; payload: productInterFace }
+  | { type: "ADD_TO_CART"; payload: ProductItem }
+  | { type: "REMOVE_FROM_CART"; payload: ProductItem }
+  | { type: "DECREASE_QUANTITY"; payload: ProductItem }
   | { type: "CLEAR_CART" };

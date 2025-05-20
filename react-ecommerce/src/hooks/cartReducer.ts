@@ -1,6 +1,6 @@
-import type { cartItem, CartAction, CartState } from "../types/cartItems";
+import type { CartAction, CartState, CartItem } from "../types/cartItems";
 
-const getCartCount = (cartItems: cartItem[] | []): number => {
+const getCartCount = (cartItems: CartItem[] | []): number => {
   return cartItems.length;
 };
 

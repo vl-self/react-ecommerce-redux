@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { productInterFace } from "../../types/product";
+import type { ProductItem } from "../../types/product";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faGripVertical } from "@fortawesome/free-solid-svg-icons";
 import ListPageCard from "./ListPageCard";
@@ -10,7 +10,7 @@ const pgSizes = [4, 8, 16];
 const ProductList = () => {
   const [curPgSize, setCurPgSize] = useState(pgSizes[1]);
   const [curPage, setCurPage] = useState(1);
-  const [products, setProducts] = useState<productInterFace[]>([]);
+  const [products, setProducts] = useState<ProductItem[]>([]);
   const productsLength = useRef(0);
   const [loading, setLoading] = useState(true);
 

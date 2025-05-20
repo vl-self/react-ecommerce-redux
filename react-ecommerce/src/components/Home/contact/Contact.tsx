@@ -61,6 +61,7 @@ const Contact = () => {
               <input
                 type="text"
                 id="Email"
+                autoComplete="off"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               ></input>
             </div>
@@ -73,7 +74,7 @@ const Contact = () => {
               </label>
               <textarea
                 rows={4}
-                name="message"
+                id="message"
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 placeholder="Enter Message Here"
               ></textarea>

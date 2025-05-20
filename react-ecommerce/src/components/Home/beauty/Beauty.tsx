@@ -26,8 +26,8 @@ const Beauty = () => {
         Beauty Products
       </h2>
       <div className="flex justify-between">
-        {beautyProds.map((item) => {
-          return <ProductCard item={item}></ProductCard>;
+        {beautyProds.map((item, index) => {
+          return <ProductCard key={index} item={item}></ProductCard>;
         })}
       </div>
     </section>

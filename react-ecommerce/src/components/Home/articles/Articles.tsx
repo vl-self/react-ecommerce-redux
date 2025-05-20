@@ -5,7 +5,7 @@ export const Articles = () => {
     <section id="articles" className="py-[8rem]">
       <div className="flex gap-x-8">
         {[1, 2, 3].map((item) => {
-          return <ArticleCard item={item}></ArticleCard>;
+          return <ArticleCard key={item} item={item}></ArticleCard>;
         })}
       </div>
     </section>
