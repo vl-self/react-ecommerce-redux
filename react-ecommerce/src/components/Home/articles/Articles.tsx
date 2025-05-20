@@ -26,7 +26,7 @@ export const ArticleCard: React.FC<itemProps> = ({ item }) => {
       <h5 className="my-[2rem]">
         Reading articles always makes the moments happy
       </h5>
-      <div className="text-right border-t border-[#C8C8C8]">
+      <div className="text-right border-t border-[var(--site-border-color)]">
         <ul className="m-[0 auto] p-[1rem]">
           <li className="inline-block mr-1.5">
             <a href="#">

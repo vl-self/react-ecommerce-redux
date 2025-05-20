@@ -80,10 +80,10 @@ const ProductList = () => {
         <>
           <div className="m-[20px_auto]">
             <div className="inline-block w-[49%] text-left">
-              <span className="border-[#daa556] border p-[1rem]">
+              <span className="border-[var(--site-light-theme-text-color)] border p-[1rem]">
                 <FontAwesomeIcon icon={faList} />
               </span>
-              <span className="border-[#daa556] border p-[1rem]">
+              <span className="border-[var(--site-light-theme-text-color)] border p-[1rem]">
                 <FontAwesomeIcon icon={faGripVertical} />
               </span>
             </div>
@@ -91,10 +91,12 @@ const ProductList = () => {
               <select
                 onChange={onPageSizeChange}
                 defaultValue={curPgSize}
-                className="border-[#daa556] border p-[10px] m-[0_1rem]"
+                className="border-[var(--site-light-theme-text-color)] border p-[10px] m-[0_1rem]"
               >
                 {pgSizes.map((size) => (
-                  <option value={size}>{size}</option>
+                  <option key={size} value={size}>
+                    {size}
+                  </option>
                 ))}
               </select>
               <button onClick={onPrev} disabled={curPage == 1}>
@@ -110,7 +112,7 @@ const ProductList = () => {
           </div>
           <div className="grid grid-flow-row grid-cols-[repeat(2,minmax(250px,_1fr))] md:grid-cols-[repeat(4,minmax(250px,_1fr))] gap-8">
             {visiblePrds.map((prd) => {
-              return <ListPageCard prd={prd}></ListPageCard>;
+              return <ListPageCard key={prd.id} prd={prd}></ListPageCard>;
             })}
           </div>
         </>

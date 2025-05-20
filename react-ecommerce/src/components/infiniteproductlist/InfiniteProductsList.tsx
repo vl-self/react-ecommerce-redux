@@ -59,10 +59,10 @@ const InfiniteProductsList = () => {
         <>
           <div className="m-[20px_auto]">
             <div className="inline-block w-[49%] text-left">
-              <span className="border-[#daa556] border p-[1rem]">
+              <span className="border-[var(--site-light-theme-text-color)] border p-[1rem]">
                 <FontAwesomeIcon icon={faList} />
               </span>
-              <span className="border-[#daa556] border p-[1rem]">
+              <span className="border-[var(--site-light-theme-text-color)] border p-[1rem]">
                 <FontAwesomeIcon icon={faGripVertical} />
               </span>
             </div>

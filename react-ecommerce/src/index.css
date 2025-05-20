@@ -3,6 +3,47 @@
 @theme {
   --font-roboto: "Roboto", sans-serif;
   --body-font-weight: 400;
+  --site-border-color: #c8c8c8;
+
+  /************************** LIGHT THEME ********************************************/
+
+  --site-light-root-bg-color: #f3f2ec;
+  --site-light-root-text-color: #213547;
+  --site-light-theme-text-color: #f0ad4e;
+
+  /** Button Theme **/
+  --site-light-button-color: var(--site-light-root-text-color);
+  --site-light-button-bg-color: #f0ad4e;
+  --site-light-button-active-color: #ec971f;
+  --site-light-button-disabled-colorr: #efd9b8;
+  /** End of Button Theme **/
+
+  /** Link Theme **/
+  --site-light-anchor-color: var(--site-light-root-text-color);
+  --site-light-anchor-highlight-color: #ec971f;
+  /** End of Link Theme **/
+
+  /************************** END LIGHT THEME ********************************************/
+
+  /************************** DARK THEME ********************************************/
+
+  --site-dark-root-bg-color: #111;
+  --site-dark-root-text-color: #fff;
+  --site-dark-theme-text-color: #ff7a18;
+
+  /** Button Theme **/
+  --site-dark-button-color: #fff;
+  --site-dark-button-bg-color: #262626;
+  --site-dark-button-active-color: #ff7a18;
+  --site-dark-button-disabled-colorr: #909090;
+  /** End of Button Theme **/
+
+  /** Link Theme **/
+  --site-dark-anchor-color: #fff;
+  --site-dark-anchor-highlight-color: #ff7a18;
+  /** End of Link Theme **/
+
+  /************************** END DARK THEME ********************************************/
 }
 
 :root {
@@ -11,8 +52,8 @@
   font-weight: var(--body-font-weight);
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--site-dark-root-text-color);
+  background-color: var(--site-dark-root-bg-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,11 +63,11 @@
 
 a {
   font-weight: var(--body-font-weight);
-  color: #646cff;
+  color: var(--site-dark-anchor-color);
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--site-dark-anchor-highlight-color);
 }
 
 body {
@@ -61,44 +102,57 @@ h5 {
   line-height: 1;
 }
 
-button {
+button,
+.buttonCls {
+  display: inline-block;
   padding: 0.5rem;
   font-size: 1em;
   font-weight: 400;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--site-dark-button-bg-color);
   cursor: pointer;
   transition: border-color 0.25s;
+  color: var(--site-dark-button-color);
 }
-button:hover {
-  border-color: #646cff;
+button:hover,
+.buttonCls:hover {
+  border-color: var(--site-dark-button-active-color);
+  color: var(--site-dark-button-color);
 }
 button:focus,
-button:focus-visible {
+.buttonCls:focus,
+button:focus-visible,
+.buttonCls:focus-visible {
   /* outline: 4px auto -webkit-focus-ring-color; */
   outline: none;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #f3f2ec;
+    color: var(--site-light-root-text-color);
+    background-color: var(--site-light-root-bg-color);
   }
   a {
-    color: #383838;
+    color: var(--site-light-anchor-color);
   }
   a:hover {
-    color: #383838;
+    color: var(--site-light-anchor-highlight-color);
   }
-  button {
-    background-color: #daa556;
+  button,
+  .buttonCls {
+    background-color: var(--site-light-button-bg-color);
+    color: var(--site-light-button-color);
   }
-  button:hover {
-    background-color: #f0a22d;
-    border-color: #daa556;
+  button:hover,
+  .buttonCls:hover {
+    background-color: var(--site-light-button-active-color);
+    border-color: var(--site-light-button-active-color);
+    color: var(--site-light-button-color);
   }
-  button:disabled {
-    background-color: #d2c4ae;
-    border-color: #daa556;
+  button:disabled,
+  .buttonCls:disabled {
+    background-color: var(--site-light-button-disabled-colorr);
+    border-color: var(--site-light-button-disabled-colorr);
+    color: var(--site-light-button-color);
   }
 }

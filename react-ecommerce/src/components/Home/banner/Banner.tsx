@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+
 const Banner = () => {
   return (
     <div className="w-[85%] m-[0_auto] py-[2rem] grid grid-cols-[repeat(2,minmax(250px,_1fr))] grid-flow-col">
@@ -9,7 +11,10 @@ const Banner = () => {
             feugiat amet, libero ipsum enim pharetra hac. Urna commodo, lacus ut
             magna velit eleifend. Amet, quis urna, a eu.
           </p>
-          <button className="uppercase mt-[2rem]">Shop Now</button>
+          <Link to="/prodlist" className="buttonCls">
+            Shop Now
+            {/* <button className="uppercase mt-[2rem]"></button> */}
+          </Link>
         </div>
       </div>
       <div>

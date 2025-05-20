@@ -1,3 +1,5 @@
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 import { HashLink } from "react-router-hash-link";
 const Header = () => {
@@ -34,14 +36,14 @@ const Header = () => {
               <HashLink to="/#contact">Contact</HashLink>
             </li>
             <li className="uppercase text-center">
-              <button className="uppercase">
-                <Link to="/prodlist">Shop Now</Link>
-              </button>
+              <Link to="/cart">
+                <FontAwesomeIcon icon={faCartShopping} />
+              </Link>
             </li>
           </ul>
         </nav>
       </div>
-      <div className="ml-[-6rem] mr-[-6rem] border-x border-b border-gray-950/5"></div>
+      <div className="ml-[-6rem] mr-[-6rem] border-x border-b border-[var(--site-border-color)]"></div>
     </header>
   );
 };
