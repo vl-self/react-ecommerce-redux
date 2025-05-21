@@ -13,6 +13,17 @@ export const cartReducer = (
       const updated = [...state.cartItems, { ...action.payload, quantity: 1 }];
       return { cartItems: updated, cartCount: getCartCount(updated) };
     }
+    case "INCREASE_QUANTITY": {
+      const updated = state.cartItems
+        .map((item) =>
+          item.id === action.payload.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+        .filter((item) => item.quantity > 0);
+      console.log(updated);
+      return { cartItems: updated, cartCount: getCartCount(updated) };
+    }
     case "DECREASE_QUANTITY": {
       const updated = state.cartItems
         .map((item) =>

@@ -1,3 +1,4 @@
+import { useCartDispatchContext } from "../../hooks/CartContext";
 import type { ProductItem } from "../../types/product";
 
 type ProductCardProps = {
@@ -5,6 +6,13 @@ type ProductCardProps = {
 };
 
 const ListPageCard: React.FC<ProductCardProps> = ({ prd }) => {
+  const cartDispatch = useCartDispatchContext();
+  const AddToCart = (prd: ProductItem): void => {
+    cartDispatch({
+      type: "ADD_TO_CART",
+      payload: { ...prd, quantity: 1 },
+    });
+  };
   return (
     <div
       className="bg-[#EFEEE8] p-[2rem] relative group overflow-hidden"
@@ -12,7 +20,12 @@ const ListPageCard: React.FC<ProductCardProps> = ({ prd }) => {
     >
       <figure className="min-w-[186px] min-h-[186px]">
         <img src={prd.thumbnail} className="w-full" alt="Loading.."></img>
-        <button className="uppercase absolute bottom-[-40px] left-[0px] p-[0.5rem] text-black w-full rounded-none group-hover:bottom-[0px]">
+        <button
+          className="uppercase absolute bottom-[-40px] left-[0px] p-[0.5rem] text-black w-full rounded-none group-hover:bottom-[0px]"
+          onClick={() => {
+            AddToCart(prd);
+          }}
+        >
           Add To Cart
         </button>
       </figure>

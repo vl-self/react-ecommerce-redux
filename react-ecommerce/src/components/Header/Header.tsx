@@ -9,13 +9,13 @@ const Header = () => {
     <header id="header">
       <div className="grid grid-cols-3 py-[1.5rem]">
         <div className="col-span-1">
-          <a href="index.html">
+          <Link to="/">
             <img
               src="../../src/assets/logo_dark.svg"
               alt="logo"
               className="w-[50px]"
             ></img>
-          </a>
+          </Link>
         </div>
         <nav className="col-span-2">
           <ul className="grid auto-cols-[minmax(100px,1fr)] grid-flow-col items-center h-full gap-[10px]">
