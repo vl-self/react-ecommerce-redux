@@ -1,19 +1,19 @@
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-
 import { Outlet } from "react-router";
-import { CartProvider } from "./hooks/CartContext";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
 
 function App() {
   return (
-    <CartProvider>
+    <Provider store={store}>
       <div className="px-[6rem]">
         <Header></Header>
         <Outlet></Outlet>
         <Footer></Footer>
       </div>
-    </CartProvider>
+    </Provider>
   );
 }
 // https://dummyjson.com/products

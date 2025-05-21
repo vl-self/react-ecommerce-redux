@@ -7,6 +7,10 @@ export type CartState = {
   cartItems: CartItem[];
   cartCount: number;
 };
+
+export type CartSliceState = {
+  cartItems: CartItem[];
+};
 export type CartAction =
   | { type: "ADD_TO_CART"; payload: CartItem }
   | { type: "REMOVE_FROM_CART"; payload: CartItem }

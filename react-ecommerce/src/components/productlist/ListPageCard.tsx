@@ -1,18 +1,19 @@
-import { useCartDispatchContext } from "../../hooks/CartContext";
 import type { ProductItem } from "../../types/product";
+import { addToCart } from "../../features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 
 type ProductCardProps = {
   prd: ProductItem;
 };
 
 const ListPageCard: React.FC<ProductCardProps> = ({ prd }) => {
-  const cartDispatch = useCartDispatchContext();
+  const cartDispatch = useDispatch();
+
   const AddToCart = (prd: ProductItem): void => {
-    cartDispatch({
-      type: "ADD_TO_CART",
-      payload: { ...prd, quantity: 1 },
-    });
+    const payload = { ...prd, quantity: 1 };
+    cartDispatch(addToCart(payload));
   };
+
   return (
     <div
       className="bg-[#EFEEE8] p-[2rem] relative group overflow-hidden"

@@ -6,43 +6,32 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { CartItem } from "../../types/cartItems";
-import { useCartDispatchContext } from "../../hooks/CartContext";
 import { usePriceHook } from "../../hooks/usePriceHook";
 import styles from "./cart.module.css";
+import { useDispatch } from "react-redux";
+import { removeFromCart, updateQuantity } from "../../features/cart/cartSlice";
 
 const CartCard = ({ cartItem }: { cartItem: CartItem }) => {
-  const cartDispatch = useCartDispatchContext();
+  const cartDispatch = useDispatch();
+
   const { priceAmount, discountAmount, saleAmount, totalAmount } =
     usePriceHook(cartItem);
 
   const removeCartItem = () => {
-    cartDispatch({
-      type: "REMOVE_FROM_CART",
-      payload: cartItem,
-    });
+    cartDispatch(removeFromCart(cartItem.id));
   };
 
   const addToWishList = () => {};
 
   const increaseQunatity = () => {
-    if (cartItem.quantity >= 10) {
-      alert("Maximum quantity is 10");
-      return;
-    }
-    cartDispatch({
-      type: "INCREASE_QUANTITY",
-      payload: cartItem,
-    });
+    cartDispatch(
+      updateQuantity({ id: cartItem.id, quantity: cartItem.quantity + 1 })
+    );
   };
   const decreaseQunatity = () => {
-    if (cartItem.quantity <= 1) {
-      alert("Minimum quantity is 1");
-      return;
-    }
-    cartDispatch({
-      type: "DECREASE_QUANTITY",
-      payload: cartItem,
-    });
+    cartDispatch(
+      updateQuantity({ id: cartItem.id, quantity: cartItem.quantity - 1 })
+    );
   };
 
   return (
@@ -79,6 +68,7 @@ const CartCard = ({ cartItem }: { cartItem: CartItem }) => {
             <button
               className={styles.cartButton}
               role="button"
+              disabled={cartItem.quantity >= 10}
               onClick={increaseQunatity}
             >
               <FontAwesomeIcon icon={faPlus} />
@@ -87,6 +77,7 @@ const CartCard = ({ cartItem }: { cartItem: CartItem }) => {
             <button
               className={`${styles.cartButton}`}
               role="button"
+              disabled={cartItem.quantity <= 1}
               onClick={decreaseQunatity}
             >
               <FontAwesomeIcon icon={faMinus} />

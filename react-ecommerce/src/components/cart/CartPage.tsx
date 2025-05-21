@@ -1,10 +1,11 @@
-import { useCartItemContext } from "../../hooks/CartContext";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
 import CartCard from "./CartCard";
 import OrderSummary from "./OrderSummary";
 
 const CartPage = () => {
-  const cartData = useCartItemContext();
-  const hasCartItems = cartData.cartItems.length > 0;
+  const cartData = useSelector((state: RootState) => state.cart.cartItems);
+  const hasCartItems = cartData.length > 0;
   return (
     <section className="py-[3.5rem] ">
       <h3 className="mb-[30px]">Shopping Cart</h3>
@@ -12,7 +13,7 @@ const CartPage = () => {
         <div className="grid grid-cols-7 grid-flow-col gap-[2rem]">
           <div className="col-span-5">
             {hasCartItems &&
-              cartData.cartItems.map((cartItem) => {
+              cartData.map((cartItem) => {
                 return <CartCard cartItem={cartItem}></CartCard>;
               })}
             {!hasCartItems && (

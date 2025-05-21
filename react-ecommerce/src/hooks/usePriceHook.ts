@@ -7,7 +7,7 @@ export function usePriceHook(cartItem: CartItem): prdPriceDetails {
   let priceAmount = Number(price.toFixed(2));
   let discountAmount = Number((price * (discountPercentage / 100)).toFixed(2));
   let saleAmount = priceAmount - discountAmount;
-  let totalAmount = saleAmount * quantity;
+  let totalAmount = Number((saleAmount * quantity).toFixed(2));
 
   return {
     priceAmount,

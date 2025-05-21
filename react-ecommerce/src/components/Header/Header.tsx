@@ -2,9 +2,11 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router";
 import { HashLink } from "react-router-hash-link";
-import { useCartItemContext } from "../../hooks/CartContext";
+import { useSelector } from "react-redux";
+import type { RootState } from "../../store/store";
+
 const Header = () => {
-  const { cartCount } = useCartItemContext();
+  const cartData = useSelector((state: RootState) => state.cart.cartItems);
   return (
     <header id="header">
       <div className="grid grid-cols-3 py-[1.5rem]">
@@ -42,7 +44,7 @@ const Header = () => {
                 <div className="relative inline-block text-2xl text-gray-800 cursor-pointer">
                   <FontAwesomeIcon icon={faCartShopping} />
                   <span className="absolute -top-2 -right-2 bg-[var(--site-light-theme-text-color)] text-[--site-light-root-text-color] text-xs font-bold px-1.5 py-0.5 rounded-full">
-                    {cartCount ? cartCount : 0}
+                    {cartData.length ? cartData.length : 0}
                   </span>
                 </div>
               </Link>
