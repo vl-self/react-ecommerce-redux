@@ -6,32 +6,29 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { CartItem } from "../../types/cartItems";
-import { usePriceHook } from "../../hooks/usePriceHook";
 import styles from "./cart.module.css";
-import { useDispatch } from "react-redux";
-import { removeFromCart, updateQuantity } from "../../features/cart/cartSlice";
+import { useAppDispatch } from "../../store/store";
+import { removeFromCart, updateCart } from "../../features/cart/cartSlice";
 
 const CartCard = ({ cartItem }: { cartItem: CartItem }) => {
-  const cartDispatch = useDispatch();
-
-  const { priceAmount, discountAmount, saleAmount, totalAmount } =
-    usePriceHook(cartItem);
+  const dispatch = useAppDispatch();
 
   const removeCartItem = () => {
-    cartDispatch(removeFromCart(cartItem.id));
+    // this is a local mutation ... no dummy api available ... so order summary content will not change
+    dispatch(removeFromCart(168));
   };
 
   const addToWishList = () => {};
 
-  const increaseQunatity = () => {
-    cartDispatch(
-      updateQuantity({ id: cartItem.id, quantity: cartItem.quantity + 1 })
-    );
+  // check increase/decrease quntity to one item at a time, since data returned from api is not sync for all products. check docs of https://dummyjson.com/docs/carts#carts-update
+  const increaseQunatity = async () => {
+    const item = { ...cartItem, quantity: cartItem.quantity + 1 };
+    dispatch(updateCart(item));
   };
-  const decreaseQunatity = () => {
-    cartDispatch(
-      updateQuantity({ id: cartItem.id, quantity: cartItem.quantity - 1 })
-    );
+
+  const decreaseQunatity = async () => {
+    const item = { ...cartItem, quantity: cartItem.quantity - 1 };
+    dispatch(updateCart(item));
   };
 
   return (
@@ -42,18 +39,10 @@ const CartCard = ({ cartItem }: { cartItem: CartItem }) => {
             <img src={cartItem.thumbnail} alt="" className="w-[150px]"></img>
           </a>
         </div>
-        <div className="flex-2">
+        <div className="flex-1">
           <h6>{cartItem.title}</h6>
-          <div>{cartItem.availabilityStatus}</div>
-          <div className="my-[1rem]">
-            <div>
-              <span className="line-through font-[300]">${priceAmount}</span>
-              <span className="ml-[1rem] bg-[var(--site-light-theme-text-color)] font-[300] p-[0.3rem]">
-                -${discountAmount}
-              </span>
-            </div>
-            <div>${saleAmount}</div>
-          </div>
+          <div>${cartItem.price}</div>
+
           <div className="flex items-center gap-5 pt-[10px] text-[var(--site-light-theme-text-color)]">
             <span onClick={addToWishList}>
               <FontAwesomeIcon icon={faHeart} />
@@ -83,7 +72,15 @@ const CartCard = ({ cartItem }: { cartItem: CartItem }) => {
               <FontAwesomeIcon icon={faMinus} />
             </button>
           </div>
-          <div>${totalAmount}</div>
+        </div>
+        <div className="my-[1rem] flex-1">
+          <div>
+            <span className="line-through font-[300]">${cartItem.price}</span>
+            <span className="ml-[1rem] bg-[var(--site-light-theme-text-color)] font-[300] p-[0.3rem]">
+              -${cartItem.discountedTotal}
+            </span>
+          </div>
+          <div>${cartItem.total}</div>
         </div>
       </div>
     </div>

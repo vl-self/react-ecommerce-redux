@@ -1,19 +1,25 @@
-import type { ProductItem } from "./product";
-
-export interface CartItem extends ProductItem {
+export type CartData = {
+  id: number;
+  products: CartItem[];
+  total: number;
+  discountedTotal: number;
+  userId: number;
+  totalProducts: number;
+  totalQuantity: number;
+};
+export type CartItem = {
+  id: number;
+  title: string;
+  price: number;
   quantity: number;
-}
-export type CartState = {
-  cartItems: CartItem[];
-  cartCount: number;
+  total: number;
+  discountPercentage: number;
+  discountedTotal: number;
+  thumbnail: string;
 };
 
-export type CartSliceState = {
-  cartItems: CartItem[];
+export type CartState = {
+  cartData: CartData;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
 };
-export type CartAction =
-  | { type: "ADD_TO_CART"; payload: CartItem }
-  | { type: "REMOVE_FROM_CART"; payload: CartItem }
-  | { type: "DECREASE_QUANTITY"; payload: CartItem }
-  | { type: "INCREASE_QUANTITY"; payload: CartItem }
-  | { type: "CLEAR_CART" };
