@@ -4,20 +4,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList, faGripVertical } from "@fortawesome/free-solid-svg-icons";
 import ListPageCard from "./ListPageCard";
 import AltProductList from "./AltProductList";
+import { useAppDispatch, useAppSelector } from "../../store/store";
+import { fetchProducts } from "../../features/productlist/productListSlice";
 
 const pgSizes = [4, 8, 16];
 
 const ProductList = () => {
   const [curPgSize, setCurPgSize] = useState(pgSizes[1]);
   const [curPage, setCurPage] = useState(1);
-  const [products, setProducts] = useState<ProductItem[]>([]);
-  const productsLength = useRef(0);
-  const [loading, setLoading] = useState(true);
+
+  const dispatch = useAppDispatch();
+  const { productData, status } = useAppSelector((state) => state.productlist);
+  const products = productData.products;
 
   const getCurrentPagePrds = useCallback(() => {
     const end = curPage * curPgSize;
     const start = end - curPgSize;
-    const totalPages = Math.ceil(productsLength.current / (end - start));
+    const totalPages = Math.ceil(productData.total / (end - start));
     const visiblePrds = products.slice(start, end);
 
     console.log(
@@ -50,33 +53,17 @@ const ProductList = () => {
     setCurPage(1);
   };
 
-  const fetchProducts = async () => {
-    setLoading(true);
-    const end = curPage * curPgSize;
-    const start = end - curPgSize;
-    console.log("start end", start, end);
-    const res = await fetch(
-      `https://dummyjson.com/products?limit=${end}&skip=${start}`
-    );
-    try {
-      if (res.status === 200) {
-        const resObj = await res.json();
-        setProducts(resObj.products);
-        productsLength.current = resObj.total;
-        setLoading(false);
-      }
-    } catch (e) {
-      console.error("Error while fetch Products");
-    }
+  const callFetchProducts = () => {
+    dispatch(fetchProducts());
   };
 
   useEffect(() => {
-    fetchProducts();
+    callFetchProducts();
   }, [curPage, curPgSize]);
 
   return (
     <div className="p-[3.5rem]">
-      {!loading && visiblePrds.length > 0 && (
+      {status == "succeeded" && visiblePrds.length > 0 && (
         <>
           <div className="m-[20px_auto]">
             <div className="inline-block w-[49%] text-left">
@@ -117,8 +104,7 @@ const ProductList = () => {
           </div>
         </>
       )}
-      {/* {loading && <Spinner />} */}
-      {loading && <AltProductList></AltProductList>}
+      {status === "loading" && <AltProductList></AltProductList>}
     </div>
   );
 };

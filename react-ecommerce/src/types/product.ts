@@ -1,4 +1,4 @@
-export interface ProductItem {
+export type ProductItem = {
   id: number;
   title: string;
   description: string;
@@ -36,4 +36,17 @@ export interface ProductItem {
   };
   images: string[];
   thumbnail: string;
-}
+};
+
+export type ProductData = {
+  products: ProductItem[];
+  total: number;
+  skip: number;
+  limit: number;
+};
+
+export type ProductState = {
+  productData: ProductData;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+};
