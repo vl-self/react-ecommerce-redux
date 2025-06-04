@@ -89,7 +89,7 @@ const Footer = () => {
               <a href="#">Suggesting edits</a>
             </li>
             <li className={styles.footer_item}>
-              <a href="#">Contact us</a>
+              <a href="#">Contact us Here</a>
             </li>
           </ul>
         </div>
